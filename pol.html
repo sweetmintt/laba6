@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Лабораторная 6</title>
+ <script>
+  // Возведение в степень
+  function pow(x, n) {
+            if (n === 1) {
+                return x;
+            } else {
+                return x * pow(x, n - 1);
+            }
+        }
+  // Нахождение НОД-возвращает наибольший общий делитель
+  function gcd(a, b) {
+            if (!b) {
+                return a;
+            }
+            return gcd(b, a % b);
+        }
+
+  // Наименьшая цифра - возвращает наименьшую цифру числа x
+  function minDigit(x) {
+            return Math.min(...(x.toString().split('').map(Number)));
+        }
+
+  // Pluralization - сколько записей было найдено в результате поискового запроса
+  function pluralizeRecords(n) {
+   if (n === 1) {
+    return "В результате выполнения запроса была найдена 1 запись";
+   } else {
+    return "В результате выполнения запроса было найдено " + n + " записей";
+   }
+  }
+
+  // Числа Фибоначчи - вернёт n-ое число из последовательности Фибоначчи(в которой первые два числа равны 0 и 1, а каждое последующее число равно сумме двух предыдущих чисел)
+  function fibb(n) {
+            if (n <= 1) {
+                return n;
+            }
+            let a = 0;
+            let b = 1;
+            for (let i = 2; i <= n; i++) {
+                let c = a + b;
+                a = b;
+                b = c;
+            }
+            return b;
+        }
+ </script>
+</head>
+<body>
+ <h1>Лабораторная 6</h1>
+ 
+ <h2>Возведение в степень</h2>
+ <p>Результат: <span id="powResult"></span></p>
+
+ <h2>Нахождение НОД</h2>
+ <p>Результат: <span id="gcdResult"></span></p>
+
+ <h2>Наименьшая цифра</h2>
+ <p>Результат: <span id="minDigitResult"></span></p>
+
+ <h2>Pluralization</h2>
+ <p>Результат: <span id="pluralizeRecordsResult"></span></p>
+
+ <h2>Числа Фибоначчи</h2>
+ <p>Результат: <span id="fibbResult"></span></p>
+
+ <script>
+  // Возведение в степень
+  let powResult = pow(4, 3);
+  document.getElementById("powResult").innerText = powResult;
+
+  // Нахождение НОД
+  let gcdResult = gcd(24, 36);
+  document.getElementById("gcdResult").innerText = gcdResult;
+
+  // Наименьшая цифра
+  let minDigitResult = minDigit(9997766654);
+  document.getElementById("minDigitResult").innerText = minDigitResult;
+
+  // Pluralization
+  let pluralizeRecordsResult = pluralizeRecords(5);
+  document.getElementById("pluralizeRecordsResult").innerText = pluralizeRecordsResult;
+
+  // Числа Фибоначчи
+  let fibbResult = fibb(20);
+  document.getElementById("fibbResult").innerText = fibbResult;
+ </script>
+</body>
+</html>
